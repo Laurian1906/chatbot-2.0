@@ -34,7 +34,7 @@ function ChatbotInterface() {
 
             setChatHistory((prevHistory) => [
                 ...prevHistory,
-                { role: "model", model_rsp: `Model:  ${messages.data.model}` || "There was a system error, please try again later!" }
+                { role: "model", model_rsp: messages.data.model || "There was a system error, please try again later!" }
             ]);
 
         }
@@ -66,7 +66,7 @@ function ChatbotInterface() {
 
         setChatHistory((prevHistory) => [
             ...prevHistory,
-            { role: "user", usr_msg: `User: ${userMessage}` }
+            { role: "user", usr_msg: userMessage }
         ]);
     };
 

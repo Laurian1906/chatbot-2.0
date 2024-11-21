@@ -6,6 +6,7 @@
     "@chatscope/chat-ui-kit-react": "^2.0.3",
     "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.5",
+    "@fontsource/inter": "^5.1.0",
     "@fontsource/roboto": "^5.1.0",
     "@mui/icons-material": "^6.1.7",
     "@mui/material": "^6.1.7",

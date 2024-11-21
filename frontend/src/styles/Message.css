@@ -33,15 +33,17 @@
     font-size: 1.75rem;
     color: rgb(20, 20, 20);
     font-weight: 600;
+    margin-bottom:60px;
 }
 
 .message-ai {
     width:auto;
     height:auto;
     display: flex;
-    font-size: 19px;
+    font-size: 0.875rem;
     color: #212121;
     display:grid;
+    margin-bottom:60px;
 }
 
 .message-history {

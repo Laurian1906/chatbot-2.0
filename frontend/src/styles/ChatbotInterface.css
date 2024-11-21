@@ -20,11 +20,11 @@
 
 .wrapper-input-container {
   width: 100%;
-  height: auto;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: transparent;
+  background: linear-gradient(to top, white, white , rgba(255, 255, 255, 0.87) , rgba(255, 255, 255, 0.521)  , transparent);
   position: fixed;
   bottom: 0;
 }

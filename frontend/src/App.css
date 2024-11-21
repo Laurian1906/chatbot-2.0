@@ -8,7 +8,7 @@ Color palete: https://colorhunt.co/palette/000b58003161006a67fff4b7
   align-items: center;
   width: 100%;
   height: 100vh;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Inter', 'Roboto', sans-serif;
   box-sizing: border-box;
 }
 
