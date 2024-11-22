@@ -1,0 +1,20 @@
+services:
+  app:
+    build: ./backend-chatbot/app
+    env_file:
+      - ./backend-chatbot/app/.env
+    ports:
+      - "8000:8000"
+    networks:
+      - chatbot-network
+  
+  web-app:
+    build: ./frontend-chatbot
+    ports:
+      - "3000:3000"
+    networks:
+      - chatbot-network
+
+networks:
+  chatbot-network:
+    driver: bridge

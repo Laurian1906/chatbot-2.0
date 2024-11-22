@@ -1,4 +1,7 @@
-from app.constants import OPENAI_API_KEY, GEMINI_API_KEY
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 generation_config = {
     "temperature": 0.45,
@@ -8,5 +11,5 @@ generation_config = {
     "response_mime_type": "text/plain",
 }
 
-OPENAI_API_KEY = OPENAI_API_KEY
-GEMINI_API_KEY = GEMINI_API_KEY
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")

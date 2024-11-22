@@ -16,6 +16,7 @@
 }
 
 .upload_file{
+    display: none;
     position: 'absolute';
     opacity: 0;
     width: '1px';

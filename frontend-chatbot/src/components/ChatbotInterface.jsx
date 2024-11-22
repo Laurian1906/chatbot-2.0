@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Message from "./Message";
 import '../styles/ChatbotInterface.css';
+import { backend_url } from '../config.js'
 
 import IconButton from '@mui/material/IconButton';
-// import FileInput from "./FileInput";
+import FileInput from "./FileInput";
 // import SendIcon from '@mui/icons-material/Send';
 import Button from '@mui/material/Button';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
-import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 
 import axios from "axios";
 
@@ -19,18 +19,13 @@ function ChatbotInterface() {
     const [chatHistory, setChatHistory] = useState([]);
     const [selectedModel, setSelectedModel] = useState("gemini");
 
-
     async function fetchData() {
         try {
-            const getMessages = () => axios.get(`http://127.0.0.1:8000/${selectedModel}`, {
+            const getMessages = () => axios.get(`${backend_url}/${selectedModel}`, {
                 params: { user_message: userMessage }
             });
 
             const [messages] = await Promise.all([getMessages()]);
-
-            // if(messages.status != 200){
-
-            // }
 
             setChatHistory((prevHistory) => [
                 ...prevHistory,
@@ -73,17 +68,17 @@ function ChatbotInterface() {
     return (
         <div className="wrapper">
             <div className="navbar">
-                <button class="button-svg">
+                <button className="button-svg">
                     <svg xmlns="http://www.w3.org/2000/svg"
                         width="16.5"
                         height="16.5"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="svg-icon">
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="svg-icon">
                         <rect width="18"
                             height="18" x="3" y="3" rx="2">
                         </rect>
@@ -127,9 +122,7 @@ function ChatbotInterface() {
                         value={userMessage}
                         onChange={(e) => setUserMessage(e.target.value)}
                         onKeyDown={handleKeyDown}></input>
-                    <IconButton color="primary" onClick={handleSendMessage} disabled={userMessage === ""}>
-                        <AddCircleOutlineOutlinedIcon sx={{ fill: '#a6a6a7', fontSize: 22 }} />
-                    </IconButton>
+                    <FileInput/>
                     <IconButton color="primary" onClick={handleSendMessage} disabled={userMessage === ""}>
                         <ArrowCircleUpIcon sx={{ fill: '#596ced', fontSize: 29 }} />
                     </IconButton>
