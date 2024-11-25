@@ -7,7 +7,11 @@ import IconButton from '@mui/material/IconButton';
 import FileInput from "./FileInput";
 // import SendIcon from '@mui/icons-material/Send';
 import Button from '@mui/material/Button';
+import Drawer from '@mui/material/Drawer';
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import CategoryOutlinedIcon from '@mui/icons-material/CategoryOutlined';
+import Typography from '@mui/material/Typography';
 
 import axios from "axios";
 
@@ -18,6 +22,11 @@ function ChatbotInterface() {
     // const [modelResponse, setModelResponse] = useState([""]);
     const [chatHistory, setChatHistory] = useState([]);
     const [selectedModel, setSelectedModel] = useState("gemini");
+    const [open, setOpen] = useState(false);
+
+    const toggleDrawer = (newOpen) => {
+        setOpen(newOpen);
+    }
 
     async function fetchData() {
         try {
@@ -68,7 +77,7 @@ function ChatbotInterface() {
     return (
         <div className="wrapper">
             <div className="navbar">
-                <button className="button-svg">
+                <button onClick={() => toggleDrawer(true)} className="button-svg">
                     <svg xmlns="http://www.w3.org/2000/svg"
                         width="16.5"
                         height="16.5"
@@ -80,8 +89,7 @@ function ChatbotInterface() {
                         strokeLinejoin="round"
                         className="svg-icon">
                         <rect width="18"
-                            height="18" x="3" y="3" rx="2">
-                        </rect>
+                            height="18" x="3" y="3" rx="2"></rect>
                         <path d="M9 3v18"></path>
                     </svg>
                 </button>
@@ -97,7 +105,36 @@ function ChatbotInterface() {
 
                     </sup>
                 </Button>
-            </div>
+                <Drawer sx={{ width: 700 }} open={open} onClose={() => toggleDrawer(false)}>
+                    <div className="drawer-container">
+                        <Button sx={{
+                            backgroundColor: 'transparent',
+                            color: 'white',
+                            fontSize: 16,
+                            padding: '5px',
+                            borderRadius: '12px',
+                            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                            textTransform: 'capitalize'
+                        }} color="primary">
+                            <AddCircleOutlineIcon sx={{ fill: '#a6a6a7', fontSize: 22, marginRight: 1 }} />
+                            New Chat
+
+                        </Button>
+                        <Button sx={{
+                            backgroundColor: 'transparent',
+                            color: 'white',
+                            fontSize: 16,
+                            padding: '5px',
+                            borderRadius: '12px',
+                            textTransform: 'capitalize'
+                        }} color="primary">
+                            <CategoryOutlinedIcon sx={{ fill: '#a6a6a7', fontSize: 22, marginRight: 1 }} />
+                            Agents
+                        </Button>
+
+                    </div>
+                </Drawer>
+            </div >
             <div className="container">
                 <div className="textbox-container">
                     <Message message={chatHistory} />
@@ -122,13 +159,13 @@ function ChatbotInterface() {
                         value={userMessage}
                         onChange={(e) => setUserMessage(e.target.value)}
                         onKeyDown={handleKeyDown}></input>
-                    <FileInput/>
+                    <FileInput />
                     <IconButton color="primary" onClick={handleSendMessage} disabled={userMessage === ""}>
                         <ArrowCircleUpIcon sx={{ fill: '#596ced', fontSize: 29 }} />
                     </IconButton>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

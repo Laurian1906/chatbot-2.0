@@ -69,6 +69,13 @@
   align-items: center;
 }
 
+.drawer-container {
+  width:16.875rem;
+  height: 100%;
+  background-color: #212121;
+  color: #ffffff;
+}
+
 .selectModel {
   width: auto;
   height: auto;
@@ -89,7 +96,6 @@
 .selectModel select {
   border: 0;
   border: 1px solid rgb(21, 21, 21);
-  ;
   padding: 5px;
   border-radius: 25px;
   background: transparent;
@@ -183,6 +189,7 @@ input[type="file"] {
   border: 0;
   border: 1px solid gray;
   margin: 0px 20px;
+  cursor: pointer;
 }
 
 .svg-icon {
