@@ -1,12 +1,17 @@
-import React, { useRef } from 'react';
+import React, { useState, useRef } from 'react';
+// import Button from '@mui/material/Button';
 import AddCircleOutlineOutlinedIcon from '@mui/icons-material/AddCircleOutlineOutlined';
 import IconButton from '@mui/material/IconButton';
+import SnackBar from '@mui/material/Snackbar';
+import CloseIcon from '@mui/icons-material/Close';
 import axios from 'axios'
 import { backend_url } from '../config';
 
 const FileInput = () => {
 
   const fileInputRef = useRef(null)
+  const [uploadState, setUploadState] = useState("");
+  const [open, setOpen] = useState(false)
 
   const handleButtonClick = () => {
     fileInputRef.current.click();
@@ -25,6 +30,7 @@ const FileInput = () => {
       });
 
       console.log("File uploaded successfully:", response.data);
+      setUploadState(`File ${response.data.filename} was uploaded succesfully!`)
     } catch (e) {
       console.error("Error uploading file:", e);
     }
@@ -32,6 +38,7 @@ const FileInput = () => {
 
 
   const handleFileChange = (event) => {
+    setOpen(true);
     const file = event.target.files[0];
     if (file) {
       sendFileData(file);
@@ -40,10 +47,35 @@ const FileInput = () => {
     }
   };
 
+  const handleCloseSnackbar = () => {
+    setOpen(false);
+  }
+
+  const action = (
+    <React.Fragment>
+      {/* <Button color="secondary" size="small" onClick={handleCloseSnackbar}>
+        UNDO
+      </Button> */}
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleCloseSnackbar}
+      >
+        <CloseIcon fontSize="small" />
+      </IconButton>
+    </React.Fragment>
+  );
 
   return (
     <div>
-
+      <SnackBar
+        open={open}
+        autoHideDuration={6500}
+        onClose={handleCloseSnackbar}
+        message={uploadState}
+        action={action}
+      />
       <label htmlFor="fileInput">
         <IconButton color="primary" onClick={handleButtonClick}>
           <AddCircleOutlineOutlinedIcon sx={{ fill: '#a6a6a7', fontSize: 22 }} />

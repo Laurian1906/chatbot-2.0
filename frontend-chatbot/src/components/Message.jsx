@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import '../styles/Message.css';
 import ReactMarkdown from "react-markdown";
+import Box from '@mui/material/Box';
 
 function Message({ message }) {
     const lastMessageRef = useRef(null);
@@ -36,7 +37,26 @@ function Message({ message }) {
 
     return (
         <div className='messageBox'>
-            {messageHistory.length > 0 ? messageHistory : <div className='placeholder-text' style={{ textAlign: "center" }}>What will you tackle today?</div>}
+            {messageHistory.length > 0 ? messageHistory :
+                <div className='placeholder-section' style={{ textAlign: "center" }}>
+                    <p className='placeholder-text'>Don't know what to ask?</p>
+                    <p className='placeholder-subtext'>Here are some suggestions</p>
+                    <div className="question-box-container">
+                        <Box className='question-box'>
+                            <span className='box-text'>Do you like hiking?</span>
+                        </Box>
+                        <Box className='question-box'>
+                            <span className='box-text'>Hi!</span>
+                        </Box>
+                        <Box className='question-box'>
+                            <span className='box-text'>What is your favorite soap?</span>
+                        </Box>
+                        <Box className='question-box'>
+                            <span className='box-text'>Cats are nice!</span>
+                        </Box>
+                    </div>
+
+                </div>}
         </div>
     );
 }

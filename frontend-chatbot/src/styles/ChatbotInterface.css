@@ -24,7 +24,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to top, white, white , rgba(255, 255, 255, 0.87) , rgba(255, 255, 255, 0.521)  , transparent);
+  background: linear-gradient(to top, white, white, rgba(255, 255, 255, 0.87), rgba(255, 255, 255, 0.521), transparent);
   position: fixed;
   bottom: 0;
 }
@@ -57,10 +57,11 @@
   background-color: transparent;
   color: #ddd;
   height: auto;
+  /* height: 100%; */
   font-size: 34px;
   overflow: auto;
   top: 72px;
-  padding-bottom:172px;
+  padding-bottom: 172px;
   width: 100%;
   position: absolute;
   display: flex;
@@ -70,10 +71,92 @@
 }
 
 .drawer-container {
-  width:16.875rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 16.875rem;
   height: 100%;
   background-color: #212121;
   color: #ffffff;
+}
+
+.drawer-section1,
+.drawer-section2,
+.drawer-section3,
+.drawer-section4 {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  border-bottom: 1px solid #333333;
+  padding: 0.5rem 0.75rem 0.3rem;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.drawer-section2{
+  flex: 1 1 0px;
+}
+
+.history-conv-title {
+  padding: 0rem 0rem 0rem 0.5rem;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.875rem;
+  font-weight: 450;
+  width: 100%;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.drawer-section-title {
+  font-size: 0.75rem;
+  color: rgb(163, 163, 168);
+  line-height: normal;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  padding: 0rem 0.5rem;
+  width: 100%;
+  border-radius: 0.5rem;
+  user-select: none;
+}
+
+.drawer-section2-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.52rem;
+  height: 100%;
+  width: 100%;
+  flex: 1 1 0px;
+}
+
+.button-menu{
+  display:flex;
+  gap: 0.2rem;
+  width:100%;
+  padding: 0.5rem;
+  height: 34px;
+}
+
+.button-menu span{
+  width:100%;
+  display:flex;
+  align-items: center;
+  padding: 0.5rem;
+  justify-content: flex-start;
+  background: transparent;
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-transform: capitalize;
+}
+
+.button-menu:hover{
+  background-color:#383838;
 }
 
 .selectModel {
@@ -89,16 +172,17 @@
 
 .label {
   font-size: 15px;
-  color: rgb(21, 21, 21);
+  color: rgb(255, 255, 255);
   font-weight: 600;
 }
 
 .selectModel select {
   border: 0;
-  border: 1px solid rgb(21, 21, 21);
+  border: 1px solid rgb(255, 255, 255);
   padding: 5px;
   border-radius: 25px;
-  background: transparent;
+  background: #212121;
+  color: #ffffff;
 }
 
 .uploadDocument {
@@ -198,9 +282,19 @@ input[type="file"] {
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
-
+  width:16.5px;
+  height:16.5px;
+  fill:none;
+  stroke:currentColor;
 }
 
+.wrapper-input-icon{
+  width:100%;
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
 @media screen and (max-width:740px) {
   .chatbox-container {
@@ -214,5 +308,14 @@ input[type="file"] {
     width: 80%;
     margin: 20px;
     height: 50px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width:738px) {
+  .selectModel{
+    display: none;
   }
 }
